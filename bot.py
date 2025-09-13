@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from holidays_parser import get_holidays
 
 load_dotenv()
+os.environ["TZ"] = "Europe/Moscow"
 API_TOKEN = os.getenv("BOT_TOKEN")
 
 logging.basicConfig(level=logging.INFO)
