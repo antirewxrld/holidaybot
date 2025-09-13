@@ -11,8 +11,10 @@ from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
 from holidays_parser import get_holidays
 
+offset = datetime.timedelta(hours=3)
+datetime.timezone(offset, name='МСК')
+
 load_dotenv()
-os.environ["TZ"] = "Europe/Moscow"
 API_TOKEN = os.getenv("BOT_TOKEN")
 
 logging.basicConfig(level=logging.INFO)
