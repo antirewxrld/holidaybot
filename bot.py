@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import os
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters import Command
@@ -11,8 +11,8 @@ from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
 from holidays_parser import get_holidays
 
-offset = datetime.timedelta(hours=3)
-datetime.timezone(offset, name='МСК')
+offset = timedelta(hours=3)
+timezone(offset, name='МСК')
 
 load_dotenv()
 API_TOKEN = os.getenv("BOT_TOKEN")
