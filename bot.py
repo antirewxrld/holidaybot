@@ -1,18 +1,12 @@
 import asyncio
 import logging
 import os
-from datetime import datetime, timedelta, timezone
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters import Command
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from apscheduler.triggers.cron import CronTrigger
-from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
 from holidays_parser import get_holidays
-
-offset = timedelta(hours=3)
-timezone(offset, name='МСК')
 
 load_dotenv()
 API_TOKEN = os.getenv("BOT_TOKEN")
@@ -70,7 +64,7 @@ async def send_daily_holiday():
 
 # --- Основная функция ---
 async def main():
-    scheduler = AsyncIOScheduler(timezone=ZoneInfo("Europe/Moscow"))
+    scheduler = AsyncIOScheduler()
     scheduler.add_job(send_daily_holiday, "cron", hour=7, minute=0)
     scheduler.start()
     await dp.start_polling(bot)

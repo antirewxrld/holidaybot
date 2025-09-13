@@ -8,4 +8,5 @@ services:
       - ./:/app
     environment:
       - BOT_TOKEN=${BOT_TOKEN}
+      - TZ=Europe/Moscow
     command: sh -c "pip install --no-cache-dir -r requirements.txt && python bot.py"
